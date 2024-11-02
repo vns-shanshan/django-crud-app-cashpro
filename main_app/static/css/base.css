@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  --nav-bg: #0a6847;
+  --text-color: rgb(0, 0, 0);
+  --button-bg: #0a6847;
+  --button-bg-hover: #043021;
+  --secondary: #f3ca52;
+  --font-xtreme: 4.2rem;
+  --font-xxl: 3.6rem;
+  --font-xl: 2.4rem;
+  --font-l: 1.8rem;
+  --font-reg: 1.6rem;
+  --card-border-radius: 6px;
+  min-height: 100vh;
+}
+
+/* ------- Header ------- */
+header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--nav-bg);
+  padding: 20px 10px;
+}
+
+.header-logo-container a {
+  font-family: "Gloock", serif;
+  font-size: var(--font-xxl);
+  color: var(--secondary);
+  text-decoration: none;
+  margin-left: 40px;
+}
+
+.header-nav-container {
+  margin: 10px;
+}
+
+.header-nav-container ul {
+  padding: 5px 8px;
+  display: flex;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.header-nav-container ul li {
+  margin-left: 20px;
+}
+
+.header-nav-container a {
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+/* -------- About --------- */
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  gap: 60px;
+}
+
+h2 {
+  font-size: var(--font-xxl);
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+h1 {
+  font-size: var(--font-xtreme);
+  font-weight: 600;
+  color: var(--button-bg);
+}
+
+h3 {
+  font-size: var(--font-l);
+  font-weight: 400;
+  color: var(--text-color);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 2;
+}

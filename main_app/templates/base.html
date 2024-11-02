@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'images/favicon.ico' %}"
+    />
+    <title>CashPro</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloock&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    {% block head %} {% endblock head %}
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo-container">
+        <a href="/">CashPro</a>
+      </div>
+
+      <nav class="header-nav-container">
+        <ul>
+          <li><a href="">All Transactions</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="">Login</a></li>
+          <li><a href="">Sign Up</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>{% block content %}{% endblock content %}</main>
+  </body>
+</html>

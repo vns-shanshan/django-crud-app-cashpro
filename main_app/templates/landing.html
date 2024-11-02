@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/landing.css' %}" />
+{% endblock head %} {% block content %}
+<div class="landing-container">
+  <section class="landing-description-container">
+    <h1>Your Money Your Move</h1>
+    <h3>
+      CashPro is your ultimate digital wallet for fast, secure, and hassle-free
+      payments. Experience the future of cash flow with CashPro!
+    </h3>
+    <button>Get Started</button>
+  </section>
+
+  <section class="landing-image-container">
+    <img src="{% static 'images/landing-img.jpg' %}" alt="Landing Page Image" />
+  </section>
+</div>
+{% endblock content %}
