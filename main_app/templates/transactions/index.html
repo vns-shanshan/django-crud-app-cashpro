@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/transactions/transaction-index.css' %}"
+/>
+{% endblock head %} {% block content %}
+<section class="card-container">
+  {% for transaction in transactions %}
+  <div class="card">
+    <div class="card-content">
+      <h3>{{ transaction.sender }} paid {{ transaction.receiver }}</h3>
+      <h3>${{ transaction.amount }}</h3>
+      <h4>{{ transaction.created_at }}</h4>
+      <h3>{{ transaction.note }}</h3>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock content %}
