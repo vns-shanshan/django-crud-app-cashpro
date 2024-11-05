@@ -1,0 +1,64 @@
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title a {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+}
+
+.title a img {
+  width: 70px;
+}
+
+.title h1 {
+  position: absolute;
+  top: 20%;
+  left: 45%;
+  font-size: var(--font-xtreme);
+  color: var(--secondary);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+}
+
+.content label {
+  font-size: var(--font-l);
+  font-weight: 400;
+}
+
+.content input[type="number"] {
+  width: 594px;
+  padding: 10px;
+  font-size: var(--font-reg);
+  border: 2px solid #0a6847;
+  border-radius: 14px;
+  color: var(--text-color);
+  margin-left: 40px;
+}
+
+.content button {
+  background-color: var(--button-bg);
+  color: var(--secondary);
+  font-size: var(--font-xl);
+  padding: 10px 80px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-left: 800px;
+}
+
+.content button:hover {
+  background-color: var(--button-bg-hover);
+}

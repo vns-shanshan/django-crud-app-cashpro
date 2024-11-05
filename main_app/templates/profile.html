@@ -1,20 +1,20 @@
 {% extends "base.html" %} {% load static %} {% block head %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
 {% endblock head %} {% block content %}
-<section>
+<section class="top">
   <h1>{{ user.username }}</h1>
   <div class="profile-avatar">
     <img src="{% static 'images/landing-img.jpg' %}" alt="placeholder-avatar" />
   </div>
-  <h2>My Balance: ${{ profile.balance }}</h2>
+  <h2>My Balance: <span>${{ profile.balance }}</span></h2>
 
-  <div class="transaction-features">
-    <a href=""><button>Send Money</button></a>
-    <a href="{% url 'add-money' %}"><button>Add Money</button></a>
+  <div class="transaction-btns">
+    <a href="" class="btn pay">Send Money</a>
+    <a href="{% url 'add-money' %}" class="btn add">Add Money</a>
   </div>
 </section>
 
-<section>
+<section class="bottom">
   {% for transaction in transactions %}
   <div class="card">
     <div class="card-info">
