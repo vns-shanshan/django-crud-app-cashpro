@@ -7,10 +7,26 @@
 <section class="card-container">
   {% for transaction in transactions %}
   <div class="card">
-    <div class="card-content">
-      <h3>{{ transaction.sender }} paid {{ transaction.receiver }}</h3>
-      <h3>${{ transaction.amount }}</h3>
-      <h4>{{ transaction.created_at }}</h4>
+    <div class="card-info">
+      <div class="avatar">
+        <img
+          src="{% static 'images/landing-img.jpg' %}"
+          alt="placeholder-avatar"
+        />
+      </div>
+
+      <div class="information">
+        <h3>
+          <span>{{ transaction.sender }}</span> paid
+          <span>{{ transaction.receiver }}</span>
+        </h3>
+        <h4>{{ transaction.created_at|date:"m/d/y g:i A" }}</h4>
+      </div>
+
+      <div class="amount"><h3>${{ transaction.amount }}</h3></div>
+    </div>
+
+    <div class="card-note">
       <h3>{{ transaction.note }}</h3>
     </div>
   </div>

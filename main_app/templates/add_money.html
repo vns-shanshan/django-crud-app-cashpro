@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/add-money.css' %}" />
+{% endblock head %} {% block content %}
+<a href="{% url 'profile' %}">Back</a>
+<h1>Add Money</h1>
+
+<form action="/addmoney/" method="POST">
+  {% csrf_token %}
+  <label for="amount">Amount ($): </label>
+  <input type="number" name="amount" />
+
+  <button type="submit">Submit</button>
+</form>
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+{% endblock head %} {% block content %}
+<section>
+  <h1>{{ user.username }}</h1>
+  <div class="profile-avatar">
+    <img src="{% static 'images/landing-img.jpg' %}" alt="placeholder-avatar" />
+  </div>
+  <h2>My Balance: ${{ profile.balance }}</h2>
+
+  <div class="transaction-features">
+    <a href=""><button>Send Money</button></a>
+    <a href="{% url 'add-money' %}"><button>Add Money</button></a>
+  </div>
+</section>
+
+<section>
+  {% for transaction in transactions %}
+  <div class="card">
+    <div class="card-info">
+      <div class="avatar">
+        <img
+          src="{% static 'images/landing-img.jpg' %}"
+          alt="placeholder-avatar"
+        />
+      </div>
+
+      <div class="information">
+        <h3>
+          <span>{{ transaction.sender }}</span> paid
+          <span>{{ transaction.receiver }}</span>
+        </h3>
+        <h4>{{ transaction.created_at|date:"m/d/y g:i A" }}</h4>
+      </div>
+
+      <div class="amount">
+        {% if transaction.sender.user_id == user.id %}
+        <h3 class="red">${{ transaction.amount }}</h3>
+        {% elif transaction.receiver.user_id == user.id %}
+        <h3 class="green">${{ transaction.amount }}</h3>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card-note">
+      <h3>{{ transaction.note }}</h3>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock content %}
