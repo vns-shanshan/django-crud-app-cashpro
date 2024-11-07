@@ -1,1 +1,1 @@
-web: gunicorn cashpro-app.wsgi
+web: gunicorn cashpro.wsgi
