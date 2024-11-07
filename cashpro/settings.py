@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'cashpro.wsgi.application'
+WSGI_APPLICATION = 'cashpro-app.wsgi.application'
 
 
 # Database
