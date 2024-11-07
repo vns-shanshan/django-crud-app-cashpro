@@ -7,7 +7,9 @@
 <section class="card-container">
   {% for transaction in transactions %}
   <div class="card">
+    {% if user.is_authenticated %}
     <a href="{% url 'transaction-detail' transaction.id %}">
+      {% endif %}
       <div class="card-info">
         <div class="avatar">
           <img
@@ -30,7 +32,9 @@
       <div class="card-note">
         <h3>{{ transaction.note }}</h3>
       </div>
+      {% if user.is_authenticated %}
     </a>
+    {% endif %}
   </div>
   {% endfor %}
 </section>

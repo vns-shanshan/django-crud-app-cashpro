@@ -5,9 +5,8 @@
 }
 
 .title a {
-  position: absolute;
-  top: 15%;
-  left: 10%;
+  margin: 50px;
+  margin-left: 100px;
 }
 
 .title a img {
@@ -15,52 +14,33 @@
 }
 
 .title h1 {
-  position: absolute;
-  top: 15%;
-  left: 45%;
   font-size: var(--font-xtreme);
   color: var(--secondary);
+  margin: 0 auto;
+  padding-right: 150px;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
+  justify-content: center;
 }
 
-.form-container table {
-  width: 100%;
+.form-container p {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
 }
 
-.form-container th {
-  text-align: left;
-  padding-bottom: 10px;
-  font-weight: 400;
-  vertical-align: center;
+.form-container p label {
   font-size: var(--font-l);
+  font-weight: 400;
+  margin-top: 16px;
 }
 
-.form-container table td {
-  padding: 30px 0;
-}
-
-.form-container input[type="number"],
-.form-container input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  font-size: var(--font-reg);
-  border: 2px solid #0a6847;
-  border-radius: 14px;
-  color: var(--text-color);
-}
-
-.form-container textarea {
+.form-container p textarea {
   height: 180px;
-  width: 100%;
+  width: 30%;
   border-radius: 14px;
   border: 2px solid #0a6847;
   color: var(--text-color);
@@ -81,8 +61,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  align-self: flex-end;
+  margin-top: 40px;
+  margin-left: 600px;
+  align-self: center;
 }
 
 .btn.submit:hover {

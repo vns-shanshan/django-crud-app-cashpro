@@ -6,7 +6,7 @@
 {% endblock head %} {% block content %}
 
 <section class="transaction-container">
-  <div class="titile">
+  <div class="title">
     <a href="{% url 'transaction-index' %}"
       ><img src="{% static 'images/left-arrow.png' %}" alt="Back arrow"
     /></a>
@@ -41,23 +41,41 @@
 </section>
 
 <div class="comments-container">
-  <section class="comments">
-    <form action="{% url 'add-comment' transaction.id %}" method="POST">
-      {% csrf_token %} {{ comment_form.as_p }}
-      <button type="submit" class="btn submit">Make a Comment</button>
-    </form>
+  <form action="{% url 'add-comment' transaction.id %}" method="POST">
+    {% csrf_token %} {{ comment_form.as_p }}
+    <button type="submit" class="btn submit">Make a Comment</button>
+  </form>
 
+  <section class="comments">
     {% for comment in transaction.comment_set.all %}
-    <h3>{{ comment.user.username }}</h3>
-    <p>{{ comment.created_at|date:"m/d/y g:i A" }}</p>
-    <p>{{ comment.content }}</p>
-    {% if comment.user_id == user.id %}
-    <a
-      href="{% url 'remove-comment' transaction.id comment.id %}"
-      class="btn danger"
-      >Delete</a
-    >
-    {% endif %} {% endfor %}
+    <div class="card">
+      <div class="card-info">
+        <div class="avatar">
+          <img
+            src="{% static 'images/landing-img.jpg' %}"
+            alt="placeholder-avatar"
+          />
+        </div>
+
+        <div class="information">
+          <h3>{{ comment.user.username }}</h3>
+          <h4>{{ comment.created_at|date:"m/d/y g:i A" }}</h4>
+        </div>
+
+        {% if comment.user_id == user.id %}
+        <a
+          href="{% url 'remove-comment' transaction.id comment.id %}"
+          class="btn danger"
+          ><img src="{% static 'images/close.png' %}" alt="Delete"
+        /></a>
+        {% endif %}
+      </div>
+
+      <div class="card-note">
+        <h3>{{ comment.content }}</h3>
+      </div>
+    </div>
+    {% endfor %}
   </section>
 </div>
 

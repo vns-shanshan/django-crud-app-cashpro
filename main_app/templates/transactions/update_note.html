@@ -1,12 +1,17 @@
 {% extends 'base.html' %} {% load static %} {% block head %}
 <link rel="stylesheet" href="{% static 'css/transactions/update-note.css' %}" />
 {% endblock head %} {% block content %}
-<h1>Edit Note</h1>
+<div class="title">
+  <a href="{% url 'transaction-detail' transaction_id=transaction_id %}"
+    ><img src="{% static 'images/left-arrow.png' %}" alt="Back arrow"
+  /></a>
+  <h1>Edit Note</h1>
+</div>
 
-<form action="" method="POST">
+<form action="" method="POST" class="form-container">
   {% csrf_token %} {{ update_note_form.as_p }}
 
-  <button type="submit">Submit</button>
+  <button type="submit" class="btn submit">Submit</button>
 </form>
 
 {% endblock content %}

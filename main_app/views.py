@@ -140,7 +140,7 @@ def update_note(request, transaction_id):
         # For GET requests, populate the form with the instance data
         form = UpdateNoteForm(instance=transaction)
 
-    return render(request, 'transactions/update_note.html', {'update_note_form': form})
+    return render(request, 'transactions/update_note.html', {'update_note_form': form, 'transaction_id': transaction_id})
 
 
 
@@ -162,7 +162,7 @@ class TransactionCreate(LoginRequiredMixin, CreateView):
         return form
     
     def form_valid(self, form):
-        form.instance.sender = self.request.user.profile
+        form.instance.sender = self.request.user.profile 
         sender_user_id = self.request.user.id
         receiver_user_id = form.instance.receiver.user_id
     
