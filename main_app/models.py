@@ -8,7 +8,6 @@ from django.urls import reverse
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     balance = models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    color = models.TextField(default="green")  
 
     def __str__(self):
         return self.user.username

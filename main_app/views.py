@@ -40,8 +40,8 @@ def signup(request):
         if form.is_valid():
             user = form.save()
            
-            random_profile_color = random.choice(["red", "blue", "green", "purple", "grey"])
-            Profile.objects.create(user=user, color=random_profile_color)
+
+            Profile.objects.create(user=user)
 
             login(request, user)
             return redirect('profile')

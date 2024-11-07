@@ -19,8 +19,8 @@ CashPro is a payment app that you can create your account and transfer money to 
 - **Read**: Users can view all transactions by clicking on the _All Transactions_ or view a transaction detail.
 - **Update**: Users can update a transaction's note field.
 - **Delete**: Users can remove any comments they made.
-- **Sign In**: Users can sign in to view their profile and transaction they made.
-- **Sign Up**: Users can sign up to create and account and redirect to their profile page.
+- **Sign In**: Users can sign in to view their profile and transactions they made.
+- **Sign Up**: Users can sign up to create an account and redirect to their profile page.
 
 ### Technologies Used:
 
