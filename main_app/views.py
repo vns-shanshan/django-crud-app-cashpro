@@ -1,13 +1,9 @@
 from decimal import Decimal
 import random
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Transaction, Profile, User, Comment
-from django.views.generic.edit import CreateView, UpdateView
-from django.views.generic import ListView, DetailView
+from .models import Transaction, Profile, Comment
+from django.views.generic.edit import CreateView
 from django.contrib.auth.views import LoginView
-from django.views.decorators.csrf import csrf_protect
-from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -16,23 +12,6 @@ from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .form import CommentForm, TransactionForm, UpdateNoteForm
 from django.shortcuts import get_object_or_404
-
-
-
-# class Transaction:
-#     def __init__(self, sender, receiver, amount, note, created_at):
-#         self.sender = sender
-#         self.receiver = receiver
-#         self.amount = amount
-#         self.note = note
-#         self.created_at = created_at
-
-# transactions = [
-#     Transaction('Vanessa', 'Ryan', 5.00, 'Happy Halloween!', '11/01/24'),
-#     Transaction('Amy', 'Bryan', 10.00, 'Split the pizza.', '10/31/24'),
-#     Transaction('Cathy', 'Dylan', 15.00, 'Coffee run for the team.', '10/30/24'),
-#     Transaction('Eric', 'Frank', 20.00, 'Movie tickets.', '10/29/24')
-# ]
         
 # Create your views here.
 def landing(request):
@@ -75,14 +54,6 @@ def signup(request):
 class Signin(LoginView):
     template_name = 'signin.html'
     next_page = "profile"
-
-    # def get_success_url(self):
-    #     # Ensure the user is authenticated before retrieving user_id
-    #     user_id = self.request.user.id if self.request.user.is_authenticated else None
-    #     if user_id:
-    #         return reverse('profile', kwargs={'user_id': user_id})
-    #     else:
-    #         return reverse('signin')  # Redirect to signin if user_id is None
 
 @login_required
 def add_money(request):
@@ -131,22 +102,14 @@ def update_note(request, transaction_id):
     transaction = get_object_or_404(Transaction, id=transaction_id)
     
     if request.method == "POST":
-        # Only use request.POST on POST requests
         form = UpdateNoteForm(request.POST, instance=transaction)
         if form.is_valid():
-            form.save()  # Updates the transaction instance
+            form.save()  
             return redirect('transaction-detail', transaction_id=transaction_id)
     else:
-        # For GET requests, populate the form with the instance data
         form = UpdateNoteForm(instance=transaction)
 
     return render(request, 'transactions/update_note.html', {'update_note_form': form, 'transaction_id': transaction_id})
-
-
-
-
-# @login_required
-# def transaction_create(request):
 
 class TransactionCreate(LoginRequiredMixin, CreateView):
     model = Transaction
@@ -156,7 +119,6 @@ class TransactionCreate(LoginRequiredMixin, CreateView):
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
 
-        # Override the widget for 'my_field' to be a TextInput instead of a Select
         form.fields['receiver'].widget = forms.TextInput(attrs={'placeholder': 'Enter Username'})
 
         return form
@@ -167,7 +129,6 @@ class TransactionCreate(LoginRequiredMixin, CreateView):
         receiver_user_id = form.instance.receiver.user_id
     
         try:
-            # Your custom logic that might raise an error
             if sender_user_id == receiver_user_id:
                 raise ValueError("You cannot send money to yourself!")
             
@@ -182,8 +143,7 @@ class TransactionCreate(LoginRequiredMixin, CreateView):
             return super().form_valid(form)
         
         except ValueError as e:
-            # Add an error to the form's non-field errors
-            form.add_error(None, str(e))  # `None` is for non-field errors
+            form.add_error(None, str(e))  
             return self.form_invalid(form) 
 
         

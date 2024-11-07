@@ -22,10 +22,7 @@ class Transaction(models.Model):
 
     def __str__(self):
         return self.note
-    
-    # def get_absolute_url(self):
-    #     return reverse('transaction-detail', kwargs={'pk': self.id})
-    
+        
 class Comment(models.Model):
     transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
