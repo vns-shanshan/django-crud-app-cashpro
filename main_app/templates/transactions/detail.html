@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/transactions/transaction-detail.css' %}"
+/>
+{% endblock head %} {% block content %}
+
+<section class="transaction-container">
+  <div class="titile">
+    <a href="{% url 'transaction-index' %}"
+      ><img src="{% static 'images/left-arrow.png' %}" alt="Back arrow"
+    /></a>
+    <h1>Payment Details</h1>
+  </div>
+
+  <div class="transaction-details">
+    <div class="avatar">
+      <img
+        src="{% static 'images/landing-img.jpg' %}"
+        alt="placeholder-avatar"
+      />
+    </div>
+
+    <div class="information">
+      <h3>
+        <span>{{ transaction.sender }}</span> paid
+        <span>{{ transaction.receiver }}</span>
+      </h3>
+      <h4>{{ transaction.created_at|date:"m/d/y g:i A" }}</h4>
+    </div>
+
+    <div class="amount"><h3>${{ transaction.amount }}</h3></div>
+
+    <div class="card-note">
+      <h3>"{{ transaction.note }}"</h3>
+      <a href="{% url 'update-note' transaction.id %}">
+        <img src="{% static 'images/pencil.png' %}" alt="Edit Note" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="comments-container">
+  <section class="comments">
+    <form action="{% url 'add-comment' transaction.id %}" method="POST">
+      {% csrf_token %} {{ comment_form.as_p }}
+      <button type="submit" class="btn submit">Make a Comment</button>
+    </form>
+
+    {% for comment in transaction.comment_set.all %}
+    <h3>{{ comment.user.username }}</h3>
+    <p>{{ comment.created_at|date:"m/d/y g:i A" }}</p>
+    <p>{{ comment.content }}</p>
+    {% if comment.user_id == user.id %}
+    <a
+      href="{% url 'remove-comment' transaction.id comment.id %}"
+      class="btn danger"
+      >Delete</a
+    >
+    {% endif %} {% endfor %}
+  </section>
+</div>
+
+{% endblock content %}

@@ -9,6 +9,8 @@
 
 .top .profile-avatar {
   margin: 40px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .top .profile-avatar img {
@@ -142,4 +144,10 @@
 .card-note {
   text-align: start;
   margin: 16px 0 0 16px;
+}
+
+.circle {
+  width: 100px; /* Set the width of the circle */
+  height: 100px; /* Set the height of the circle */
+  border-radius: 50%; /* Makes it a circle */
 }

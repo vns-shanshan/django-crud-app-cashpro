@@ -5,11 +5,15 @@
   <h1>{{ user.username }}</h1>
   <div class="profile-avatar">
     <img src="{% static 'images/landing-img.jpg' %}" alt="placeholder-avatar" />
+
+    {% comment %}
+    <div class="circle" style="background-color:{{ user.profile.color }}"></div>
+    {% endcomment %}
   </div>
   <h2>My Balance: <span>${{ profile.balance }}</span></h2>
 
   <div class="transaction-btns">
-    <a href="" class="btn pay">Send Money</a>
+    <a href="{% url 'transaction-create' %}" class="btn pay">Send Money</a>
     <a href="{% url 'add-money' %}" class="btn add">Add Money</a>
   </div>
 </section>

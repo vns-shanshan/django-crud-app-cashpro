@@ -33,7 +33,7 @@
           {% if user.is_authenticated %}
           <li><a href="{% url 'transaction-index' %}">All Transactions</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="">Send Money</a></li>
+          <li><a href="{% url 'transaction-create' %}">Send Money</a></li>
           <li>
             <form id="logout-form" method="post" action="{% url 'logout' %}">
               {% csrf_token %}
@@ -50,7 +50,7 @@
 
         <ul class="right-nav">
           {% if user.is_authenticated %}
-          <li><a href="{% url 'profile' %}">Me</a></li>
+          <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
           {% endif %}
         </ul>
       </nav>
