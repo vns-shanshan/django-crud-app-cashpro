@@ -3,10 +3,18 @@
 ![CashPro Image](/main_app/static/images/cashpro-landing-page.png)
 
 ### App name: CashPro
+CashPro is an easy-to-use payment app, similar to Venmo, that lets you seamlessly send and receive money.
 
-### Description:
 
-CashPro is a payment app that you can create your account and transfer money to other users.
+**Key Features:**
+
+- <ins>Effortless Transactions</ins>: Quickly send or receive payments with a few simple steps. Add comments to personalize transactions and keep track of details.
+
+- <ins>Transaction Management</ins>: View all your transactions, add or edit notes, and manage comments for a better overview of your payment history.
+
+- <ins>User Accounts</ins>: Create an account in seconds to access your profile and transaction history. Returning users can easily sign in to manage their payment activities.
+
+
 
 ### Getting Started:
 
@@ -14,14 +22,6 @@ CashPro is a payment app that you can create your account and transfer money to 
 - [Trello - Planning CashPro](https://trello.com/b/r1v272BU/cashpro)
 - [Heroku - CashPro](https://cashpro-app-a7eaca21401a.herokuapp.com/)
 
-### Features:
-
-- **Create**: Users can create a transaction by filling in the required fields in _Send Money_ form. Users can create a comment on a _Transaction Detail_ page.
-- **Read**: Users can view all transactions by clicking on the _All Transactions_ or view a transaction detail.
-- **Update**: Users can update a transaction's note field.
-- **Delete**: Users can remove any comments they made.
-- **Sign In**: Users can sign in to view their profile and transactions they made.
-- **Sign Up**: Users can sign up to create an account and redirect to their profile page.
 
 ### Technologies Used:
 
@@ -33,7 +33,7 @@ CashPro is a payment app that you can create your account and transfer money to 
 
 ### Next Steps:
 
-- **User Search**: Enable users to search for others by their username, making it easier to find and connect with friends and contacts within the app.
+- **User Search**: Enable users to search for others by their usernames, making it easier to find recipients.
 - **Add Friends**: Allow users to add others as friends directly from their profile pages.
-- **Friends List**: Provide a dedicated Friends List feature so users can easily view and manage all their connections in one place.
-- **Profile Image Upload**: Let users upload and display a profile image. Uploaded images can stored in AWS.
+- **Friends List**: Provide a dedicated Friends List where users can easily view and manage all their connections in one place.
+- **Profile Image Upload**: Let users upload and display a profile picture. Uploaded images can be stored in AWS S3.
