@@ -33,9 +33,12 @@
 
     <div class="card-note">
       <h3>"{{ transaction.note }}"</h3>
+
+      {% if transaction.sender.user.id == user.id %}
       <a href="{% url 'update-note' transaction.id %}">
         <img src="{% static 'images/pencil.png' %}" alt="Edit Note" />
       </a>
+      {% endif %}
     </div>
   </div>
 </section>
