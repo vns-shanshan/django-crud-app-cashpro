@@ -7,8 +7,14 @@
 
 <section class="transaction-container">
   <div class="title">
-    <a href="{% url 'transaction-index' %}"
-      ><img src="{% static 'images/left-arrow.png' %}" alt="Back arrow"
+    
+    {% if previous_page == 'all-transactions' %}
+      <a href="{% url 'transaction-index' %}">
+    {% else %}
+      <a href="{% url 'profile' %}">
+    {% endif %}
+      
+      <img src="{% static 'images/left-arrow.png' %}" alt="Back arrow"
     /></a>
     <h1>Payment Details</h1>
   </div>

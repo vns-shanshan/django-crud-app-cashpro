@@ -17,34 +17,36 @@
 <section class="bottom">
   {% for transaction in transactions %}
   <div class="card">
-    <div class="card-info">
-      <div class="avatar">
-        <img
-          src="{% static 'images/landing-img.jpg' %}"
-          alt="placeholder-avatar"
-        />
+    <a href="{% url 'transaction-detail' transaction.id %}">
+      <div class="card-info">
+        <div class="avatar">
+          <img
+            src="{% static 'images/landing-img.jpg' %}"
+            alt="placeholder-avatar"
+          />
+        </div>
+
+        <div class="information">
+          <h3>
+            <span>{{ transaction.sender }}</span> paid
+            <span>{{ transaction.receiver }}</span>
+          </h3>
+          <h4>{{ transaction.created_at|date:"m/d/y g:i A" }}</h4>
+        </div>
+
+        <div class="amount">
+          {% if transaction.sender.user_id == user.id %}
+          <h3 class="red">${{ transaction.amount }}</h3>
+          {% elif transaction.receiver.user_id == user.id %}
+          <h3 class="green">${{ transaction.amount }}</h3>
+          {% endif %}
+        </div>
       </div>
 
-      <div class="information">
-        <h3>
-          <span>{{ transaction.sender }}</span> paid
-          <span>{{ transaction.receiver }}</span>
-        </h3>
-        <h4>{{ transaction.created_at|date:"m/d/y g:i A" }}</h4>
+      <div class="card-note">
+        <h3>{{ transaction.note }}</h3>
       </div>
-
-      <div class="amount">
-        {% if transaction.sender.user_id == user.id %}
-        <h3 class="red">${{ transaction.amount }}</h3>
-        {% elif transaction.receiver.user_id == user.id %}
-        <h3 class="green">${{ transaction.amount }}</h3>
-        {% endif %}
-      </div>
-    </div>
-
-    <div class="card-note">
-      <h3>{{ transaction.note }}</h3>
-    </div>
+    </a>
   </div>
   {% endfor %}
 </section>

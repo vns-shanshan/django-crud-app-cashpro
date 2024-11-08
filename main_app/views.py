@@ -21,15 +21,17 @@ def about(request):
     return render(request, 'about.html')
 
 def transaction_index(request):
-    transactions = Transaction.objects.all()
+    request.session['previous_page'] = 'all-transactions'
+    transactions = Transaction.objects.all().order_by("-created_at")
     return render(request, 'transactions/index.html', {'transactions': transactions})
 
 @login_required
 def profile(request):
+    request.session['previous_page'] = 'profile'
     profile_from_db = Profile.objects.get(user_id=request.user.id)
 
     profile = request.user.profile
-    transactions = Transaction.objects.filter(Q(sender=profile) | Q(receiver=profile))
+    transactions = Transaction.objects.filter(Q(sender=profile) | Q(receiver=profile)).order_by("-created_at")
     
     return render(request, 'profile.html', {'profile': profile_from_db, 'transactions': transactions})
 
@@ -73,8 +75,10 @@ def transaction_detail(request, transaction_id):
     transaction = Transaction.objects.get(id=transaction_id)
 
     comment_form = CommentForm()
+
+    previous_page = request.session.get('previous_page', 'all-transactions')
     
-    return render(request, 'transactions/detail.html', {'transaction': transaction, 'comment_form': comment_form})
+    return render(request, 'transactions/detail.html', {'transaction': transaction, 'comment_form': comment_form, 'previous_page': previous_page})
 
 @login_required
 def add_comment(request, transaction_id):
@@ -134,6 +138,10 @@ class TransactionCreate(LoginRequiredMixin, CreateView):
             
             sender_profile_data = Profile.objects.get(user_id=sender_user_id)
             sender_profile_data.balance -= form.instance.amount
+
+            if sender_profile_data.balance < 0:
+                raise ValueError("Insufficient funds!")
+
             sender_profile_data.save()
 
             receiver_profile_data = Profile.objects.get(user_id=receiver_user_id)
